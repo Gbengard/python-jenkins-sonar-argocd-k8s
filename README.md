@@ -6,6 +6,8 @@ This repository demonstrates a complete CI/CD pipeline using Jenkins for continu
 
 ## Pipeline Stages
 
+![pipeline](images/pipeline.png)
+
 ### 1. **Static Code Analysis**
 - **Tool Used:** SonarQube  
 - The pipeline performs static code analysis using SonarQube to ensure code quality. It scans the source code and uploads the results to the SonarQube server for detailed analysis.
@@ -44,39 +46,31 @@ This repository demonstrates a complete CI/CD pipeline using Jenkins for continu
 - **Docker Hub**: Docker credentials (`docker-cred`) must be stored in Jenkins.
 - **GitHub**: GitHub personal access token stored in Jenkins (`github`).
 
-## Folder Structure
-
-
-├── Jenkinsfile        # Jenkins pipeline definition
-
-├── deploy/
-
-│── deploy.yaml    # Kubernetes manifest
-
-├── Dockerfile         # Docker build instructions
-
-└── src/               # Application source code
-
-
 ## How to Use
 
-1. **Clone the Repository**:
+**Clone the Repository**:
    ```bash
    git clone https://github.com/gbengard/python-jenkins-argocd-k8s.git
-    ```
+   ```
 
-```markdown
 ## Setup Jenkins
+
 - Import the `Jenkinsfile` into your Jenkins job.
 - Configure the required credentials and tools in Jenkins.
 
 ## Configure SonarQube
+
+![sonar](images/sonar.png)
+
 - Ensure SonarQube is configured as a tool in Jenkins with the name `Sonar`.
 
 ## Run the Pipeline
 - Trigger the pipeline from Jenkins. Each stage will execute sequentially.
 
 ## Monitor Deployment
+
+![argocd](images/argocd.png)
+
 - ArgoCD will automatically detect changes pushed to the GitHub repository and deploy the updated application to Kubernetes.
 
 ## Key Features
@@ -85,7 +79,19 @@ This repository demonstrates a complete CI/CD pipeline using Jenkins for continu
 - Continuous delivery via ArgoCD for seamless deployment to Kubernetes.
 - Automated GitHub updates for deployment manifests.
 
-## Contact
-For questions or support, please contact [gbengardo@gmail.com](mailto:gbengardo@gmail.com).
-```
+## The Visual
 
+This is how the todo app look like
+
+![visual](images/visual.png)
+
+## Folder Structure
+
+```bash
+.
+├── Jenkinsfile        # Jenkins pipeline definition
+├── deploy/
+│   └── deploy.yaml    # Kubernetes manifest
+├── Dockerfile         # Docker build instructions
+└── src/               # Application source code
+```
