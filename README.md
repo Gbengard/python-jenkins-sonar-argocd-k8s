@@ -1,5 +1,7 @@
 # TodoApp CI/CD Pipeline with Jenkins and ArgoCD
 
+![todo App](images/todo-cicd.png)
+
 This repository demonstrates a complete CI/CD pipeline using Jenkins for continuous integration and ArgoCD for continuous delivery. The pipeline automates code analysis, Docker image creation and pushing, and deployment updates for Kubernetes manifests.
 
 ## Pipeline Stages
@@ -44,11 +46,15 @@ This repository demonstrates a complete CI/CD pipeline using Jenkins for continu
 
 ## Folder Structure
 
-.
+
 ├── Jenkinsfile        # Jenkins pipeline definition
+
 ├── deploy/
-│   └── deploy.yaml    # Kubernetes manifest
+
+│── deploy.yaml    # Kubernetes manifest
+
 ├── Dockerfile         # Docker build instructions
+
 └── src/               # Application source code
 
 
