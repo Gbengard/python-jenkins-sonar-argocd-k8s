@@ -23,7 +23,7 @@ pipeline {
 
         stage('Build Docker'){
           environment {
-            DOCKER_IMAGE = "gbengard/python-app:${BUILD_NUMBER}"        
+            DOCKER_IMAGE = "gbengard/todo-app:${BUILD_NUMBER}"        
             REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
       steps {
@@ -35,7 +35,7 @@ pipeline {
 
         stage('Push Image'){
             environment {
-                DOCKER_IMAGE = "gbengard/python-app:${BUILD_NUMBER}"        
+                DOCKER_IMAGE = "gbengard/todo-app:${BUILD_NUMBER}"        
                 REGISTRY_CREDENTIALS = credentials('docker-cred')
             }
            steps{
@@ -52,7 +52,7 @@ pipeline {
         
         stage('Update K8S manifest & push to Repo'){
             environment {
-            GIT_REPO_NAME = "python-jenkins-argocd-k8s"
+            GIT_REPO_NAME = "python-jenkins-sonar-argocd-k8s"
             GIT_USER_NAME = "gbengard"
         }
             steps {
@@ -64,7 +64,7 @@ pipeline {
                         BUILD_NUMBER=${BUILD_NUMBER}
                         git fetch origin main
                         git checkout main
-                        sed -i "s/image:.*/image: gbengard\\/python-app:${BUILD_NUMBER}/" deploy/deploy.yaml                    
+                        sed -i "s/image:.*/image: gbengard\\/todo-app:${BUILD_NUMBER}/" deploy/deploy.yaml                    
                         cat deploy/deploy.yaml
                         git clean -fd
                         git add deploy/deploy.yaml
